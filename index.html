@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPACEMAN HANGMAN</title>
+  <style>
+    body {
+      background-color: black;
+      color: rgb(120, 222, 5);
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .intro h1 {
+      font-size: 4em;
+      letter-spacing: 0.em;
+    }
+
+    
+
+    @keyframes flickerAnimation {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.1;
+      }
+    }
+
+    button#play {
+      background-color: rgb(4, 225, 63);
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    button#play:hover {
+      background-color: #ff69b4;
+    }
+
+    .game {
+      margin-top: 30px;
+    }
+
+    #categories, #alpha, #lives {
+      margin: 15px 0;
+      font-size: 1.5em;
+    }
+
+    canvas {
+      background-color: rgba(255, 255, 255, 0.89);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="intro">
+      <h1>
+        
+        <span class="flicker">S</span>PACE<span class="flicker">MAN</span>
+        <span class="bounceAnimation">HANG</span><span class="flicker">MAN</span>
+      </h1>
+      <button id="play">Play</button>
+    </div>
+    <div class="game">
+      <div id="categories"></div>
+      <div id="alpha"></div>
+      <div id="lives"></div>
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+</body>
+<script src="spaceman/main.js"></script>
+
+
+</html>

@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    color: rgb(120, 222, 5);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  .intro h1 {
+    font-size: 3em;
+  }
+  
+  button#play {
+    background-color: rgb(4, 225, 63);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  button#play:hover {
+    background-color: #ff69b4;
+  }
+  
+  .game {
+    margin-top: 30px;
+  }
+  
+  #categories, #wordDisplay, #lives, #alpha {
+    margin: 15px 0;
+    font-size: 1.5em;
+  }
+  
+  canvas {
+    background-color: rgba(255, 255, 255, 0.89);
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+  
