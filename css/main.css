@@ -1,48 +1,98 @@
 body {
-    background-color: black;
-    color: rgb(120, 222, 5);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-align: center;
+  font-family: 'Honk', sans-serif;
+  background-color: #0b0d17;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  font-size: 3rem;
+  color: #ffcc00;
+  text-shadow: 0 0 5px #ffcc00, 0 0 20px #ff8800, 0 0 40px #ff4400;
+  animation: bounce 2s infinite, glow 1.5s alternate infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
   }
-  
-  .container {
-    padding: 20px;
+  40% {
+      transform: translateY(-30px);
   }
-  
-  .intro h1 {
-    font-size: 3em;
+  60% {
+      transform: translateY(-15px);
   }
-  
-  button#play {
-    background-color: rgb(4, 225, 63);
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 5px;
+}
+
+@keyframes glow {
+  0% {
+      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ff8800, 0 0 20px #ff4400;
   }
-  
-  button#play:hover {
-    background-color: #ff69b4;
+  100% {
+      text-shadow: 0 0 10px #ffcc00, 0 0 30px #ff8800, 0 0 60px #ff4400;
   }
-  
-  .game {
-    margin-top: 30px;
-  }
-  
-  #categories, #wordDisplay, #lives, #alpha {
-    margin: 15px 0;
-    font-size: 1.5em;
-  }
-  
-  canvas {
-    background-color: rgba(255, 255, 255, 0.89);
-    margin-top: 20px;
-    width: 300px;
-    height: 300px;
-    display: block;
-    margin: 0 auto;
-  }
-  
+}
+
+.start-btn {
+  background-color: #ff1ead;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(30, 255, 71, 0.5);
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.start-btn:hover {
+  background-color: #86b446;
+  transform: scale(1.1);
+}
+
+
+.word {
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin-top: 20px;
+  color: #fff;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#keyboard .key {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#keyboard .key:hover {
+  background-color: #d84315;
+  transform: scale(1.1);
+}
+
+#keyboard .key:enabled {
+  background-color: #555;
+  color: #ccc;
+  cursor: allowed;
+}
+
+.message {
+  font-size: 1.5rem;
+  color: #ff4444;
+  margin-top: 20px;
+  height: 30px; 
+}

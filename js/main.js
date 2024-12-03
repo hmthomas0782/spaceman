@@ -1,86 +1,105 @@
-const categories = ["Movies","Planets"];
-const words = {
-  Movies: ["ET", "Avatar", "Starwars", "The Matrix", "Star Wars"],
-  Planets: ["Saturn", "Mars","Jupiter", "Earth",]
-};
+// Game words array
+const words = ['SPACE', 'ASTRONAUT', 'GALAXY', 'HOUSTON', 'NASA', 'METEOR', 'COSMOS', 'ORBIT'];
 
-let selectedCategory;
-let selectedWord;
-let lives = 6;
+// Game state variables
+let word = '';
 let guessedLetters = [];
-let wordDisplay = [];
-let alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let remainingGuesses = 6;
+let gameStatus = 'waiting'; // waiting, playing, won, lost
 
-document.getElementById("play").addEventListener("click", startGame);
+// DOM Elements
+const startButton = document.getElementById('start-game');
+const wordDisplay = document.getElementById('word');
+const keyboardDiv = document.getElementById('keyboard');
+const messageDisplay = document.getElementById('message');
+const spacemanDiv = document.getElementById('spaceman');
 
+// keyboard
+function createKeyboard() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    keyboardDiv.innerHTML = letters
+        .map(letter => `<button class="letter-btn" data-letter="${letter}">${letter}</button>`)
+        .join('');
+}
+
+// Start game function
 function startGame() {
-  // Reset the game state
-  lives = 6;
-  guessedLetters = [];
-  wordDisplay = [];
-  document.getElementById("lives").textContent = `Lives: ${lives}`;
-  document.getElementById("wordDisplay").textContent = "";
-
-  // Choose a random category and word
-  selectedCategory = categories[Math.floor(Math.random() * categories.length)];
-  selectedWord = words[selectedCategory][Math.floor(Math.random() * words[selectedCategory].length)];
-
-  // Display category
-  document.getElementById("categories").textContent = `Category: ${selectedCategory}`;
-
-  // Set up word display
-  for (let i = 0; i < selectedWord.length; i++) {
-    wordDisplay.push("_");
-  }
-  updateWordDisplay();
-
-  // Generate letter buttons
-  const alphaContainer = document.getElementById("alpha");
-  alphaContainer.innerHTML = "";
-  alpha.forEach(letter => {
-    const button = document.createElement("button");
-    button.textContent = letter;
-    button.classList.add("letter");
-    button.addEventListener("click", () => makeGuess(letter));
-    alphaContainer.appendChild(button);
-  });
-
-  // Reset canvas
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    word = words[Math.floor(Math.random() * words.length)];
+    guessedLetters = [];
+    remainingGuesses = 6;
+    gameStatus = 'playing';
+    
+    // Reset Game
+    updateDisplay();
+    createKeyboard();
+    startButton.textContent = 'RESTART GAME';
+    messageDisplay.textContent = `Remaining Guesses: ${remainingGuesses}`;
+    
+    // Enable letter buttons//
+    const letterButtons = document.querySelectorAll('.letter-btn');
+    letterButtons.forEach(btn => {
+        btn.disabled = false;
+        btn.addEventListener('click', handleLetterClick);
+    });
 }
 
-function makeGuess(letter) {
-  if (guessedLetters.includes(letter)) return; // Avoid repeated guesses
-  guessedLetters.push(letter);
-
-  if (selectedWord.includes(letter)) {
-    // Update the word display
-    for (let i = 0; i < selectedWord.length; i++) {
-      if (selectedWord[i] === letter) {
-        wordDisplay[i] = letter;
-      }
+//  letter clicks
+function handleLetterClick(event) {
+    if (gameStatus !== 'playing') return;
+    
+    const letter = event.target.dataset.letter;
+    event.target.disabled = true;
+    
+    if (!word.includes(letter)) {
+        remainingGuesses--;
+        updateSpaceman();
     }
-    updateWordDisplay();
-  } else {
-    // Incorrect guess: reduce lives and update the canvas
-    lives--;
-    document.getElementById("lives").textContent = `Lives: ${lives}`;
-    drawHangman(lives);
-    if (lives === 0) {
-      alert("Game Over! The word was: " + selectedWord);
-      startGame(); // Restart the game after losing
+    
+    guessedLetters.push(letter);
+    updateDisplay();
+    checkGameStatus();
+}
+
+// Update word display
+function updateDisplay() {
+    wordDisplay.textContent = word
+        .split('')
+        .map(letter => guessedLetters.includes(letter) ? letter : '_')
+        .join(' ');
+}
+
+// Update spaceman emoji thingy things
+function updateSpaceman() {
+    const stages = [
+        '🧑‍🚀',
+        '👨‍🚀',
+        '👨‍🚀💫',
+        '👨‍🚀💫✨',
+        '👨‍🚀💫✨🌠',
+        '👨‍🚀💫✨🌠☄️',
+        '💥'
+    ];
+    spacemanDiv.textContent = stages[6 - remainingGuesses];
+}
+
+// Check game status
+function checkGameStatus() {
+    const wordArray = word.split('');
+    const isWon = wordArray.every(letter => guessedLetters.includes(letter));
+    
+    if (isWon) {
+        gameStatus = 'won';
+        messageDisplay.textContent = 'Houston, We Have Lift OFF!! 🚀';
+    } else if (remainingGuesses === 0) {
+        gameStatus = 'lost';
+        messageDisplay.textContent = `Houston, We Have A Problem! The word was ${word}`;
+    } else {
+        messageDisplay.textContent = `Remaining Guesses: ${remainingGuesses}`;
     }
-  }
-
-  // Check if the player has won
-  if (!wordDisplay.includes("_")) {
-    alert("Congratulations! You guessed the word: " + selectedWord);
-    startGame(); // Restart the game after winning
-  }
 }
 
-function updateWordDisplay() {
-  document.getElementById("wordDisplay").textContent = wordDisplay.join(" ");
-}
+// Event listeners
+startButton.addEventListener('click', startGame);
+
+// Initial setup
+createKeyboard();
