@@ -1,6 +1,6 @@
 body {
   font-family: 'Honk', sans-serif;
-  background-image: url('/images/background.jpg'); /* Add your image path */
+  background-image: url('/images/background.jpg'); /* FIND THAT MOVING NEON BACKGROUNDDDDD */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,11 +68,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px 0;
+  margin: 50px 0;
 }
 
 #keyboard .key {
-  margin: 5px;
+  margin: 10px;
   padding: 15px 20px; /* Increased padding */
   background-color: #ff5722;
   color: #fff;
@@ -101,7 +101,7 @@ body {
   height: 40px; /* Increased from 30px */
 }
 
-/* Previous CSS remains the same */
+/* THE CATEGORY AND CLUES*/
 
 #category {
   font-size: 3.5rem;

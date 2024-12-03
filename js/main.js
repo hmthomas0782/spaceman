@@ -1,4 +1,4 @@
-// Game words array with categories and clues
+// Game words array categories and clues
 const words = [
   { word: 'SPACE', category: 'Astronomy', clue: 'The final frontier' },
   { word: 'ASTRONAUT', category: 'Profession', clue: 'Trained for space travel' },
