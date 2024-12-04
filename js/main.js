@@ -142,10 +142,10 @@ document.getElementById('volumeControl').addEventListener('input', (e) => {
 document.getElementById('start-game').addEventListener('click', function() {
   const board = document.getElementById('keyboard');
 
-  // Add the shake class
+  // Added the shake class
   board.classList.add('board-shake');
 
-  // Remove the shake class after the animation ends to allow re-trigger
+  // Shake Features 
   setTimeout(() => {
       board.classList.remove('board-shake');
   }, 500); // Match duration of the shake animation
