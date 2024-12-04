@@ -142,7 +142,7 @@ document.getElementById('volumeControl').addEventListener('input', (e) => {
 document.getElementById('start-game').addEventListener('click', function() {
   const board = document.getElementById('keyboard');
 
-  // Added the shake class
+  // Added the shake 
   board.classList.add('board-shake');
 
   // Shake Features 
