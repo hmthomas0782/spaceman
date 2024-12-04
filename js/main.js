@@ -120,3 +120,14 @@ startButton.addEventListener('click', startGame);
 
 // Initial setup
 createKeyboard();
+
+// SOUNDS AND MUSIC 
+const audioElements = {
+  takeoff: new Audio('rocket-launch-sfx-253937.mp3')
+  gameOver: new Audio('astronaut-says-game-over-73039.mp3')
+  winner: new Audio('sounds/winner.mp3'),
+  background: new Audio('/retro-gaming-271301.mp3')
+};
+
+//  background music to loop
+audioElements.background.loop = true;

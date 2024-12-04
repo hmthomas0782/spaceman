@@ -5,7 +5,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #0b0d17; /* Fallback color */
+  background-color: #0b0d17; /*  Backup color */
   color: #fff;
   text-align: center;
   margin: 0;
@@ -45,7 +45,7 @@ body {
   color: #fff;
   font-size: 2rem; /* Increased from 1.5rem */
   border: none;
-  padding: 15px 30px; /* Increased padding */
+  padding: 15px 30px; /* increased padding */
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(30, 255, 71, 0.5);
@@ -78,7 +78,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 4px;
-  font-size: 1.5rem; /* Increased from 1.2rem */
+  font-size: 1.5rem; /* increased from 1.2rem */
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }

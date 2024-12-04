@@ -37,10 +37,35 @@
 <div id="message"></div>
 <div id="spaceman"></div>
 
+<audio id="takeoffSound" preload="auto">
+    <source src="rocket-launch-sfx-253937.mp3 " type="audio/mp3">
+</audio>
+
+<audio id="gameOverSound" preload="auto">
+    <source src="astronaut-says-game-over-73039.mp3" type="audio/mp3">
+</audio>
+
+<audio id="winnerSound" preload="auto">
+    <source src="ufo-take-off-31823.mp3" type="audio/mp3">
+</audio>
+
+<audio id="backgroundMusic" preload="auto" loop>
+    <source src="retro-gaming-271301.mp3" type="audio/mp3">
+</audio>
+
+<!-- Volume-->
+<div class="sound-controls">
+    <label for="volumeControl">Game Volume:</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+    
+    <button id="toggleMusic" class="control-btn">
+        🔊 Toggle Music
+    </button>
+</div>
 
     </main>
     
-    <!-- Add JavaScript -->
+    <!--JavaScript -->
     <script src="js/main.js"></script>
 </body>
 </html>
