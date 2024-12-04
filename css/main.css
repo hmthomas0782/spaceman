@@ -1,11 +1,11 @@
 body {
   font-family: 'Honk', Arial;
-  background-image: url('digital-retro-cyber-surface-landscape-80s_107791-21135.jpg'); /* FIND THAT MOVING NEON BACKGROUNDDDDD */
+  background-image: url('digital-retro-cyber-surface-landscape-80s_107791-21135.jpg'); /* Neon Moving Background */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #0b0d17; /*  Backup color */
+  background-color: #0b0d17; /* Backup */
   color: #fff;
   text-align: center;
   margin: 0;
@@ -13,7 +13,7 @@ body {
 }
 
 .title {
-  font-size: 8.5rem; /* Increased from 3rem */
+  font-size: 8.5rem;
   color: #ffcc00;
   text-shadow: 0 0 5px #ffcc00, 0 0 20px #ff8800, 0 0 40px #ff4400;
   animation: bounce 2s infinite, glow 1.5s alternate infinite;
@@ -43,9 +43,9 @@ body {
 .start-btn {
   background-color: #ff1ead;
   color: #fff;
-  font-size: 2rem; /* Increased from 1.5rem */
+  font-size: 2rem;
   border: none;
-  padding: 15px 30px; /* increased padding */
+  padding: 15px 30px;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(30, 255, 71, 0.5);
@@ -71,37 +71,49 @@ body {
   margin: 50px 0;
 }
 
-#keyboard .key {
-  margin: 10px;
-  padding: 15px 20px; /* Increased padding */
-  background-color: #ff5722;
-  color: #fff;
+.letter-btn {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #ff22ae;
+  color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 1.5rem; /* increased from 1.2rem */
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
 }
 
-#keyboard .key:hover {
-  background-color: #d84315;
+.letter-btn:hover {
+  background-color: #ff8a65;
   transform: scale(1.1);
 }
 
-#keyboard .key:enabled {
+.letter-btn:disabled {
   background-color: #555;
-  color: #ccc;
-  cursor: allowed;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 }
 
 .message {
-  font-size: 4rem; /* Increased from 1.5rem */
+  font-size: 4rem;
   color: #ff4444;
   margin-top: 20px;
-  height: 40px; /* Increased from 30px */
+  height: 40px;
 }
-
-/* THE CATEGORY AND CLUES*/
 
 #category {
   font-size: 3.5rem;
@@ -115,4 +127,22 @@ body {
   color: #bfb7bc;
   margin: 15px 0;
   text-shadow: 0 0 5px #e4d4de, 0 0 10px #ff8800;
+}
+/* Shake Animation */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.board-shake {
+  animation: shake 0.5s ease-in-out;
 }

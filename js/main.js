@@ -1,4 +1,4 @@
-// Game words array categories and clues
+/// Game words array categories and clues
 const words = [
   { word: 'SPACE', category: 'Astronomy', clue: 'The final frontier' },
   { word: 'ASTRONAUT', category: 'Profession', clue: 'Trained for space travel' },
@@ -7,7 +7,7 @@ const words = [
   { word: 'NASA', category: 'Organization', clue: 'Space agency in the U.S.' },
   { word: 'METEOR', category: 'Astronomy', clue: 'A shooting star' },
   { word: 'COSMOS', category: 'Astronomy', clue: 'The universe seen as a whole' },
-  { word: 'ORBIT', category: 'Astronomy', clue: 'A path around a celestial body' },
+  { word: 'ORBIT', category: 'Astronomy', clue: 'A path around a celestial body' }
 ];
 
 // Game state variables
@@ -29,19 +29,19 @@ const categoryDisplay = document.getElementById('category');
 
 // Keyboard
 function createKeyboard() {
+  keyboardDiv.innerHTML = '';
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  keyboardDiv.innerHTML = letters
-      .map(letter => `<button class="letter-btn" data-letter="${letter}">${letter}</button>`)
-      .join('');
-
-  const letterButtons = document.querySelectorAll('.letter-btn');
-  letterButtons.forEach(btn => {
-      btn.addEventListener('click', handleLetterClick);
-      btn.disabled = false; // Reset button state
+  letters.forEach(letter => {
+      const button = document.createElement('button');
+      button.className = 'letter-btn';
+      button.dataset.letter = letter;
+      button.textContent = letter;
+      button.addEventListener('click', handleLetterClick);
+      keyboardDiv.appendChild(button);
   });
 }
 
-// Start game function
+// Start Game
 function startGame() {
   const randomEntry = words[Math.floor(Math.random() * words.length)];
   word = randomEntry.word;
@@ -51,7 +51,6 @@ function startGame() {
   remainingGuesses = 6;
   gameStatus = 'playing';
 
-  // Reset Game
   updateDisplay();
   createKeyboard();
   startButton.textContent = 'RESTART GAME';
@@ -60,12 +59,12 @@ function startGame() {
   categoryDisplay.textContent = `Category: ${currentCategory}`;
 }
 
-// Letter clicks
+// Handle Letter Click
 function handleLetterClick(event) {
   if (gameStatus !== 'playing') return;
 
   const letter = event.target.dataset.letter;
-  event.target.disabled = true; // Disable button after use
+  event.target.disabled = true;
 
   if (!word.includes(letter)) {
       remainingGuesses--;
@@ -77,7 +76,7 @@ function handleLetterClick(event) {
   checkGameStatus();
 }
 
-// Update word display
+// Update Word Display
 function updateDisplay() {
   wordDisplay.textContent = word
       .split('')
@@ -85,7 +84,7 @@ function updateDisplay() {
       .join(' ');
 }
 
-// Update spaceman display
+// Update Spaceman
 function updateSpaceman() {
   const stages = [
       '🧑‍🚀',
@@ -99,7 +98,7 @@ function updateSpaceman() {
   spacemanDiv.textContent = stages[6 - remainingGuesses];
 }
 
-// Check game status
+// Check Game Status
 function checkGameStatus() {
   const wordArray = word.split('');
   const isWon = wordArray.every(letter => guessedLetters.includes(letter));
@@ -115,19 +114,43 @@ function checkGameStatus() {
   }
 }
 
-// Event listeners
-startButton.addEventListener('click', startGame);
-
-// Initial setup
-createKeyboard();
-
-// SOUNDS AND MUSIC 
+// FX and Music
 const audioElements = {
-  takeoff: new Audio('rocket-launch-sfx-253937.mp3')
-  gameOver: new Audio('astronaut-says-game-over-73039.mp3')
-  winner: new Audio('sounds/winner.mp3'),
-  background: new Audio('/retro-gaming-271301.mp3')
+  takeoff: new Audio('rocket-launch-sfx-253937.mp3'),
+  gameOver: new Audio('astronaut-says-game-over-73039.mp3'),
+  winner: new Audio('ufo-take-off-31823.mp3'),
+  background: new Audio('retro-gaming-271301.mp3')
 };
 
-//  background music to loop
 audioElements.background.loop = true;
+
+document.getElementById('toggleMusic').addEventListener('click', () => {
+  if (audioElements.background.paused) {
+      audioElements.background.play();
+  } else {
+      audioElements.background.pause();
+  }
+});
+
+document.getElementById('volumeControl').addEventListener('input', (e) => {
+  const volume = e.target.value;
+  for (let audio in audioElements) {
+      audioElements[audio].volume = volume;
+  }
+});
+
+document.getElementById('start-game').addEventListener('click', function() {
+  const board = document.getElementById('keyboard');
+
+  // Add the shake class
+  board.classList.add('board-shake');
+
+  // Remove the shake class after the animation ends to allow re-trigger
+  setTimeout(() => {
+      board.classList.remove('board-shake');
+  }, 500); // Match duration of the shake animation
+});
+
+
+// Event Listeners
+startButton.addEventListener('click', startGame);

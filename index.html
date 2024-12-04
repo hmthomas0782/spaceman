@@ -3,69 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>SPACEMAN HANGMAN</title>
-    
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-   
 </head>
 <body>
     <main>
         <h1 class="title">SPACEMAN HANGMAN</h1>
-        
         <button id="start-game" class="start-btn">START GAME</button>
-        
+
         <div class="spaceman" id="spaceman"></div>
-        
-        <div class="word">
-            <span id="word"></span>
+        <div class="word"><span id="word"></span></div>
+        <div id="keyboard"></div>
+        <div class="message"><p id="message"></p></div>
+        <div id="category">Category: </div>
+        <div id="clue">Clue: </div>
+
+        <audio id="takeoffSound" preload="auto">
+            <source src="rocket-launch-sfx-253937.mp3" type="audio/mp3">
+        </audio>
+        <audio id="gameOverSound" preload="auto">
+            <source src="astronaut-says-game-over-73039.mp3" type="audio/mp3">
+        </audio>
+        <audio id="winnerSound" preload="auto">
+            <source src="ufo-take-off-31823.mp3" type="audio/mp3">
+        </audio>
+        <audio id="backgroundMusic" preload="auto" loop>
+            <source src="retro-gaming-271301.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="sound-controls">
+            <label for="volumeControl">Game Volume:</label>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+            <button id="toggleMusic" class="control-btn">🔊 Toggle Music</button>
         </div>
-        
-        <div class="buttons">
-            <div id="keyboard"></div>
-        </div>
-        
-        <div class="message">
-            <p id="message"></p>         
-        </div>
-      <div id="category">Category: </div> 
-<div id="clue">Clue: </div>
-<div id="word"></div>
-<div id="keyboard"></div>
-<div id="message"></div>
-<div id="spaceman"></div>
-
-<audio id="takeoffSound" preload="auto">
-    <source src="rocket-launch-sfx-253937.mp3 " type="audio/mp3">
-</audio>
-
-<audio id="gameOverSound" preload="auto">
-    <source src="astronaut-says-game-over-73039.mp3" type="audio/mp3">
-</audio>
-
-<audio id="winnerSound" preload="auto">
-    <source src="ufo-take-off-31823.mp3" type="audio/mp3">
-</audio>
-
-<audio id="backgroundMusic" preload="auto" loop>
-    <source src="retro-gaming-271301.mp3" type="audio/mp3">
-</audio>
-
-<!-- Volume-->
-<div class="sound-controls">
-    <label for="volumeControl">Game Volume:</label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
-    
-    <button id="toggleMusic" class="control-btn">
-        🔊 Toggle Music
-    </button>
-</div>
-
     </main>
-    
+
     <!--JavaScript -->
     <script src="js/main.js"></script>
 </body>
 </html>
+
