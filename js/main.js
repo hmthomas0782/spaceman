@@ -24,6 +24,11 @@ const audioElements = {
   winner: new Audio('../Assets/Assets-Music-FX/ufo-take-off-31823.mp3'),
   background: new Audio('../Assets/Assets-Music-FX/retro-gaming-271301.mp3')
 };
+audioElements.takeoff.preload="auto"
+audioElements.gameOver.preload="auto"
+audioElements.winner.preload="auto"
+audioElements.background.preload="auto"
+
 
 // DOM Elements
 const startButton = document.getElementById('start-game');
