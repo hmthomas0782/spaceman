@@ -26,6 +26,7 @@ const messageDisplay = document.getElementById('message');
 const spacemanDiv = document.getElementById('spaceman');
 const clueDisplay = document.getElementById('clue');
 const categoryDisplay = document.getElementById('category');
+const backgroundmusicaudio=document.getElementById('backgroundMusic')
 
 // Keyboard
 function createKeyboard() {
@@ -43,6 +44,7 @@ function createKeyboard() {
 
 // Start Game
 function startGame() {
+  audioElements.takeoff.play()
   const randomEntry = words[Math.floor(Math.random() * words.length)];
   word = randomEntry.word;
   currentClue = randomEntry.clue;
@@ -106,9 +108,11 @@ function checkGameStatus() {
   if (isWon) {
       gameStatus = 'won';
       messageDisplay.textContent = 'Houston, We Have Lift OFF!! 🚀';
+      audioElements.winner.play()
   } else if (remainingGuesses === 0) {
       gameStatus = 'lost';
       messageDisplay.textContent = `Houston, We Have A Problem! The word was ${word}`;
+      audioElements.gameOver.play()
   } else {
       messageDisplay.textContent = `Remaining Guesses: ${remainingGuesses}`;
   }
@@ -116,19 +120,19 @@ function checkGameStatus() {
 
 // FX and Music
 const audioElements = {
-  takeoff: new Audio('rocket-launch-sfx-253937.mp3'),
-  gameOver: new Audio('astronaut-says-game-over-73039.mp3'),
-  winner: new Audio('ufo-take-off-31823.mp3'),
-  background: new Audio('retro-gaming-271301.mp3')
+  takeoff: new Audio('../Assets/Assets-Music-FX/rocket-launch-sfx-253937.mp3'),
+  gameOver: new Audio('../Assets/Assets-Music-FX/astronaut-says-game-over-73039.mp3'),
+  winner: new Audio('../Assets/Assets-Music-FX/ufo-take-off-31823.mp3'),
+  background: new Audio('../Assets/Assets-Music-FX/retro-gaming-271301.mp3')
 };
-
+audioElements.background.preload=true
 audioElements.background.loop = true;
 
 document.getElementById('toggleMusic').addEventListener('click', () => {
-  if (audioElements.background.paused) {
-      audioElements.background.play();
+  if (backgroundmusicaudio.paused) {
+    backgroundmusicaudio.play();
   } else {
-      audioElements.background.pause();
+    backgroundmusicaudio.pause();
   }
 });
 
@@ -142,10 +146,10 @@ document.getElementById('volumeControl').addEventListener('input', (e) => {
 document.getElementById('start-game').addEventListener('click', function() {
   const board = document.getElementById('keyboard');
 
-  // Added the shake 
+  // Add the shake class
   board.classList.add('board-shake');
 
-  // Shake Features 
+  // Remove the shake class 
   setTimeout(() => {
       board.classList.remove('board-shake');
   }, 500); // Match duration of the shake animation
