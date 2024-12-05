@@ -19,10 +19,10 @@ let currentClue = '';
 let currentCategory = '';
 
 const audioElements = {
-  takeoff: new Audio('../Assets/Assets-Music-FX/rocket-launch-sfx-253937.mp3'),
-  gameOver: new Audio('../Assets/Assets-Music-FX/astronaut-says-game-over-73039.mp3'),
-  winner: new Audio('../Assets/Assets-Music-FX/ufo-take-off-31823.mp3'),
-  background: new Audio('../Assets/Assets-Music-FX/retro-gaming-271301.mp3')
+  takeoff: new Audio('../Assets-Music-FX/rocket-launch-sfx-253937.mp3'),
+  gameOver: new Audio('../Assets-Music-FX/astronaut-says-game-over-73039.mp3'),
+  winner: new Audio('../Assets-Music-FX/ufo-take-off-31823.mp3'),
+  background: new Audio('../Assets-Music-FX/retro-gaming-271301.mp3')
 };
 audioElements.takeoff.preload="auto"
 audioElements.gameOver.preload="auto"
