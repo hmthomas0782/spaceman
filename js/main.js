@@ -18,6 +18,13 @@ let gameStatus = 'waiting'; // waiting, playing, won, lost
 let currentClue = '';
 let currentCategory = '';
 
+const audioElements = {
+  takeoff: new Audio('../Assets/Assets-Music-FX/rocket-launch-sfx-253937.mp3'),
+  gameOver: new Audio('../Assets/Assets-Music-FX/astronaut-says-game-over-73039.mp3'),
+  winner: new Audio('../Assets/Assets-Music-FX/ufo-take-off-31823.mp3'),
+  background: new Audio('../Assets/Assets-Music-FX/retro-gaming-271301.mp3')
+};
+
 // DOM Elements
 const startButton = document.getElementById('start-game');
 const wordDisplay = document.getElementById('word');
@@ -119,14 +126,8 @@ function checkGameStatus() {
 }
 
 // FX and Music
-const audioElements = {
-  takeoff: new Audio('../Assets/Assets-Music-FX/rocket-launch-sfx-253937.mp3'),
-  gameOver: new Audio('../Assets/Assets-Music-FX/astronaut-says-game-over-73039.mp3'),
-  winner: new Audio('../Assets/Assets-Music-FX/ufo-take-off-31823.mp3'),
-  background: new Audio('../Assets/Assets-Music-FX/retro-gaming-271301.mp3')
-};
-audioElements.background.preload=true
-audioElements.background.loop = true;
+
+
 
 document.getElementById('toggleMusic').addEventListener('click', () => {
   if (backgroundmusicaudio.paused) {
