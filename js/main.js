@@ -57,7 +57,7 @@ function createKeyboard() {
 
 // Start Game
 function startGame() {
-  backgroundmusicaudio.play()
+ takeoff.play()
   const randomEntry = words[Math.floor(Math.random() * words.length)];
   word = randomEntry.word;
   currentClue = randomEntry.clue;
