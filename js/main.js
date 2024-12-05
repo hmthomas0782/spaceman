@@ -40,6 +40,7 @@ const clueDisplay = document.getElementById('clue');
 const categoryDisplay = document.getElementById('category');
 const backgroundmusicaudio=document.getElementById('backgroundMusic')
 
+
 // Keyboard
 function createKeyboard() {
   keyboardDiv.innerHTML = '';
@@ -56,7 +57,7 @@ function createKeyboard() {
 
 // Start Game
 function startGame() {
-  audioElements.takeoff.play()
+  backgroundmusicaudio.play()
   const randomEntry = words[Math.floor(Math.random() * words.length)];
   word = randomEntry.word;
   currentClue = randomEntry.clue;
