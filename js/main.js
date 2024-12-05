@@ -11,6 +11,7 @@ const backgroundMusic = document.getElementById('backgroundMusic');
 const takeoffSound = document.getElementById('takeoffSound');
 const gameOverSound = document.getElementById('gameOverSound');
 const winnerSound = document.getElementById('winnerSound');
+const restartButton = document.getElementById('restart-game'); // Restart button for the game
 
 let selectedWord = '';
 let guessedWord = [];
@@ -21,7 +22,7 @@ let gameRunning = false;
 
 // Game Word Pool
 const words = [
-    { word: 'NEBULA', category: 'Astronomy', clue: 'A cloud of gas and dust in space.' },
+    { word: 'HOUSTON', category: 'Astronomy', clue: 'Home of NASA.' },
     { word: 'ASTEROID', category: 'Space Objects', clue: 'A small rocky body orbiting the Sun.' },
     { word: 'ORBIT', category: 'Space Motion', clue: 'The path of an object around a star or planet.' },
     { word: 'GALAXY', category: 'Astronomy', clue: 'A massive system of stars, planets, and dust.' },
@@ -46,7 +47,7 @@ function handleLetterClick(letter, button) {
     if (selectedWord.includes(letter)) {
         updateGuessedWord(letter);
     } else {
-        wrongGuess();
+        wrongGuess(letter); // Pass letter for wrong guesses
     }
     checkGameStatus();
 }
@@ -60,10 +61,12 @@ function updateGuessedWord(letter) {
     wordDisplay.textContent = guessedWord.join(' ');
 }
 
-function wrongGuess() {
+function wrongGuess(letter) {
     remainingGuesses -= 1;
     const spaceman = document.getElementById('spaceman');
+    const icebox = document.getElementById('spaceman-icebox'); // Show icebox emoji for wrong answers
     spaceman.classList.add('board-shake');
+    icebox.textContent = '❄️'; // Display icebox emoji for wrong guess
     setTimeout(() => spaceman.classList.remove('board-shake'), 500);
 }
 
@@ -103,7 +106,26 @@ function startGame() {
     clueDisplay.textContent = `Clue: ${clue}`;
     generateKeyboard();
 
+    keyboard.style.display = 'block'; // Show keyboard when game starts
+    restartButton.style.display = 'none'; // Hide restart button during game
     takeoffSound.play();
+}
+
+// Restart Game Function
+function restartGame() {
+    selectedWord = '';
+    guessedWord = [];
+    remainingGuesses = 6;
+    category = '';
+    clue = '';
+    gameRunning = false;
+    wordDisplay.textContent = '';
+    messageDisplay.textContent = '';
+    categoryDisplay.textContent = '';
+    clueDisplay.textContent = '';
+    keyboard.style.display = 'none'; // Hide keyboard before game starts
+    restartButton.style.display = 'none'; // Hide restart button
+    startButton.style.display = 'block'; // Show start button for new game
 }
 
 // Sound Controls
@@ -126,6 +148,10 @@ toggleMusicButton.addEventListener('click', () => {
 
 // Event Listeners
 startButton.addEventListener('click', startGame);
+restartButton.addEventListener('click', restartGame);
 
 // Initialize
 backgroundMusic.volume = 0.5;
+startButton.style.display = 'block'; // Start button is shown initially
+keyboard.style.display = 'none'; // Keyboard is hidden initially
+restartButton.style.display = 'none'; // Restart button is hidden initially
