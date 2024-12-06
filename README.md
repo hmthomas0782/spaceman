@@ -5,7 +5,11 @@
 **Spaceman Hangman** is an interactive word-guessing game with a space exploration theme. Players must guess letters to reveal a word, aided by categories and clues, while avoiding the dreaded "game over" scenario. With vibrant animations, sound effects, and a neon glow theme, the game combines fun and challenge for players of all ages.
 
 ## Screenshots
-https://imgur.com/a/cIvhQJ3
+![SPACEMAN HANGMAN](https://i.imgur.com/W4R9YrJ.png)
+![SPACEMAN HANGMAN](https://i.imgur.com/vQ4wN6E.png)
+![SPACEMAN HANGMAN](https://i.imgur.com/vQ4wN6E.png)
+![SPACEMAN HANGMAN](https://i.imgur.com/JpKMKsh.png)
+
 
 
 ## Features
