@@ -1,0 +1,75 @@
+**Pseudocode for Spaceman Hangman Game**
+
+1\. Initialize Game
+
+\- Define a list of space-themed words.
+
+\- Randomly select a word from the list.
+
+\- Create a variable to track the displayed word with underscores (\`\_
+\_ \_ \_\`).
+
+\- Initialize an empty list to store guessed letters.
+
+\- Set the maximum number of incorrect guesses (e.g., 6).
+
+2\. Display Welcome Message
+
+\- Show a message introducing the game.
+
+\- Display the current word (as underscores).
+
+\- Show the number of remaining guesses.
+
+3\. Main Game Loop
+
+WHILE remaining guesses \> 0 AND the word is not completely guessed:
+
+    1. Prompt the player to guess a letter.
+
+          - Validate the input (must be a single letter, not already
+guessed).
+
+    2. F\*\* guessed letter is in the word:
+
+          - Replace the corresponding underscores in the displayed word.
+
+          - Add the letter to the list of guessed letters.
+
+          - Show a \"Correct Guess!\" message.
+
+    3. \*\*ELSE\*\*:
+
+          - Reduce the number of remaining guesses by 1.
+
+          - Add the letter to the list of guessed letters.
+
+          - Update the spaceman graphic to show one more part.
+
+          - Show an \"Incorrect Guess!\" message.
+
+    4. Display the updated word, guessed letters, and remaining guesses.
+
+4\. End Game
+
+\- \*\*IF\*\* the player guesses the word:
+
+    - Display a victory message.
+
+    - Show the completed word.
+
+\- \*\*ELSE\*\*:
+
+    - Display a game-over message.
+
+    - Reveal the correct word.
+
+5\. Replay Option
+
+\- Ask the player if they want to play again.
+
+\- IF\*\* \"Yes\", restart the game.
+
+\- ELSE\*\*, exit the program.
+
+END
