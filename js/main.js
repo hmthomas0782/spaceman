@@ -105,7 +105,7 @@ function startGame() {
     generateKeyboard();
 
     keyboard.style.display = 'block'; // Show keyboard when game starts
-    restartButton.style.display = 'none'; // Hide restart button during game
+
 }
 
 // Restart Game Function
