@@ -1,5 +1,6 @@
 ## Development Plan for Spaceman Hangman Game (HTML, CSS, JavaScript)
 
+<<<<<<< HEAD
 
 ## DESIGN/WIREFRAME
 
@@ -7,6 +8,8 @@ https://www.figma.com/design/z4yNvgzWNfj3g4EtBLI5OM/Wire-Framing-(Community)?nod
 
 ## PROJECT OVERVIEW
 "
+=======
+>>>>>>> 1033d57 (PsuedoCode)
 1.  Project Overview The Spaceman Hangman game will run entirely in the
     browser and involve guessing space-themed words. Players have a
     limited number of attempts to guess letters correctly before the
