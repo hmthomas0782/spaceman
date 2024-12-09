@@ -66,7 +66,6 @@ function wrongGuess(letter) {
     const spaceman = document.getElementById('spaceman');
     const icebox = document.getElementById('spaceman-icebox'); // Show icebox emoji for wrong answers
     spaceman.classList.add('board-shake');
-    icebox.textContent = '❄️'; // Display icebox emoji for wrong guess
     setTimeout(() => spaceman.classList.remove('board-shake'), 500);
 }
 
@@ -80,7 +79,6 @@ function checkGameStatus() {
         messageDisplay.textContent = 'HOUSTON, WE HAVE A PROBLEM!';
         wordDisplay.textContent = selectedWord;
         gameRunning = false;
-        gameOverSound.play();
         disableKeyboard();
     }
 }
@@ -108,7 +106,6 @@ function startGame() {
 
     keyboard.style.display = 'block'; // Show keyboard when game starts
     restartButton.style.display = 'none'; // Hide restart button during game
-    takeoffSound.play();
 }
 
 // Restart Game Function
